@@ -25,9 +25,10 @@ _asm_1024:
   ret
 
 _asm_read_int:
-  push  rbp
-  mov   rbp, rsp
-  sub   rsp, 0x10
+  enter 0x10, 0
+  ; push  rbp
+  ; mov   rbp, rsp
+  ; sub   rsp, 0x10
 
   mov   rdi, qword int_format
   lea   rsi, [rbp-4]
@@ -35,6 +36,7 @@ _asm_read_int:
   call  _scanf
 
   mov   eax, [rbp-4]
-  add   rsp, 0x10
-  pop   rbp
+  ; add   rsp, 0x10
+  ; pop   rbp
+  leave
   ret
